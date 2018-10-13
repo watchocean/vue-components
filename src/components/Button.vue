@@ -56,27 +56,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$default-color: #9f9f9f;
-$default-hover-color: #2c3e50;
-$primary-color: #1e7caf;
-$primary-hover-color: #1e7caf;
-$danger-color: #ec526d;
-$danger-hover-color: #ec526d;
-$success-color: #019875;
-$success-hover-color: #01654e;
-$warning-color: #f4b350;
-$warning-hover-color: #e9920f;
-$error-color: #ff0000;
-$error-hover-color: #ff0000;
+$default-color: #c3c0c0;
+$default-hover-color: #676f79;
+
+$primary-color: #7d98e4;
+$primary-hover-color: #078aca;
+
+$danger-color: #eaa0ad;
+$danger-hover-color: #e8506a;
+
+$success-color: #6ac79482;
+$success-hover-color: #3fab93;
+
+$warning-color: #e0bd88;
+$warning-hover-color: #cc9c54;
+
+$error-color: #f55b5b;
+$error-hover-color: #e21e1e;
 $disabled-color: #a5a0a0;
 
 @mixin button-color($color, $hover-color) {
-  color: $color;
-  box-shadow: 0 0 0 1px $color inset;
+  background: linear-gradient(to right top, $color 30%, $hover-color 100%);
 
   &:hover {
-    color: $hover-color;
-    box-shadow: 0 0 0 1px $hover-color inset;
+    background: linear-gradient(to right top, $hover-color 30%, $color 100%);
   }
 }
 
@@ -84,18 +87,17 @@ $disabled-color: #a5a0a0;
   cursor: pointer;
   border: none;
   background: 0 0;
-  border-radius: 8px;
+  border-radius: 16px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 1rem;
-  padding: 6px 10px;
+  padding: 4px 14px;
   text-decoration: none;
   outline: 0;
+  color: #fff;
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
-    color: $disabled-color !important;
-    box-shadow: 0 0 0 1px $disabled-color inset !important;
+    opacity: 0.4;
   }
 
   &[large="true"] {
@@ -107,7 +109,12 @@ $disabled-color: #a5a0a0;
   }
 
   &[markup="default"] {
-    @include button-color($default-color, $default-hover-color);
+    color: #1DA1F2;
+    box-shadow: 0 0 0 1px #1DA1F2;
+
+    &:hover{
+      background-color: #ccc;
+    }  
   }
 
   &[markup="primary"] {
@@ -128,16 +135,6 @@ $disabled-color: #a5a0a0;
 
   &[markup="error"] {
     @include button-color($error-color, $error-hover-color);
-    &:hover{
-      animation: blink 500ms 5;
-      @keyframes blink{
-        to {
-          color: transparent;
-          box-shadow: none;
-          font-size: 0.6rem;
-        }
-      }
-    }
   }
 }
 </style>
