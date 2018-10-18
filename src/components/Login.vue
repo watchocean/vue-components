@@ -15,6 +15,7 @@
 <script>
 	import "../assets/style.css"
 	import axios from 'axios'
+	import * as sys from '../services/sys'
 
 	export default {
 		data() {
@@ -25,21 +26,9 @@
 		},
 		methods: {
 			login() {
-				let path = '/employee/employeeLogin'
-				let component = '/admin'
-				let param = {
-					userName: this.userName,
-					userPwd: this.userPwd
-				}
-				axios.post(path, param).then((response) => {
-					let res = response.data;
-					if (res.status === '200') {
-						this.$router.push({ path: component})
-					} else {
-						alert(res.message);
-					}
-
-				});
+				sys.login({userName: this.userName,userPwd: this.userPwd}).then(res => {
+					
+				})
 			}
 		}
 	}
